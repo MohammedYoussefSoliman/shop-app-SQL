@@ -1,0 +1,22 @@
+extends ../includes/layout.pug
+
+block content
+    main
+        if products.length > 0
+            .grid
+                each product in products
+                    article.card.product-item
+                        header.card__header
+                            h1.product__title #{product.productData.title}
+                            h3 #{product.qty}
+                        div.card__image
+                            img(src=product.productData.imgURL, alt="Product image")
+                        div.card__content
+                            h2.product__price $#{product.productData.price}
+                        div.card__actions
+                            a(href='/products/'+product.productData.id).btn Details
+                            form(action="/cart-delete-item" method="POST")
+                                button.btn Delete
+                                input(type="hidden", value=product.productData.id, name="productId")
+        else
+            h2 Theres is no Products

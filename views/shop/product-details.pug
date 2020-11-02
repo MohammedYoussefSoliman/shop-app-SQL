@@ -1,0 +1,15 @@
+extends ../includes/layout.pug
+
+block content
+    main
+    h1.product-item #{product.title}
+    .product__section
+        .product-section-left
+            .product-img-card
+                img(src=product.imgURL, alt=product.title)
+        .product-section-right
+            h2 $#{product.price}
+            p #{product.desc}
+            form(action="/cart" method="POST")
+                button.btn Add to Cart
+                input(type="hidden", value=product.id, name="productId")

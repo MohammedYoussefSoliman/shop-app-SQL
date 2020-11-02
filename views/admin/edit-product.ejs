@@ -1,0 +1,49 @@
+<%- include('../includes/head.ejs') %>
+<%- include('../includes/navigation.ejs') %>
+    
+    <main>
+        <% if(editMode) {%>
+            <form action="/admin/edit-product" class="product-form" method="POST">
+                <div class="form-control">
+                    <label for="title">Title</label>
+                    <input id="title" type="text" name="title" value="<%= product.title %>">
+                </div>
+                <div class="form-control">
+                    <label for="imgURL">imgURL</label>
+                    <input id="imgURL" type="text" name="imgURL" value="<%= product.imageUrl %>">
+                </div>
+                <div class="form-control">
+                    <label for="desc">Description</label>
+                    <textarea type="text" id="desc" name="desc" ><%= product.desc %></textarea>
+                </div>
+                <div class="form-control">
+                    <label for="price">Price</label>
+                    <input id="price" type="text" name="price" value="<%= product.price %>">
+                    <input type="hidden" name="id" value="<%= product.id %>">
+                    <button class="btn" type="submit">Update Product</button>
+                </div>
+            </form>
+        <% } else { %>
+            <form action="/admin/add-product" class="product-form" method="POST">
+                <div class="form-control">
+                    <label for="title">Title</label>
+                    <input id="title" type="text" name="title">
+                </div>
+                <div class="form-control">
+                    <label for="imgURL">imgURL</label>
+                    <input id="imgURL" type="text" name="imgURL">
+                </div>
+                <div class="form-control">
+                    <label for="desc">Description</label>
+                    <textarea type="text" id="desc" name="desc" ></textarea>
+                </div>
+                <div class="form-control">
+                    <label for="price">Price</label>
+                    <input id="price" type="text" name="price">
+                    <button class="btn" type="submit">Add Product</button>
+                </div>
+            </form>
+        <% } %>
+    </main>
+
+<%- include('../includes/foot.ejs') %>
